@@ -6,7 +6,7 @@ from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 from modelos import Usuario, db, Cancion, Comentario
 
-#from flaskr.modelos import db, Cancion, Usuario, CancionSchema
+
 
 
 class ComentariosTest(unittest.TestCase):
