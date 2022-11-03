@@ -29,6 +29,14 @@ class ComentariosTest(unittest.TestCase):
         db.init_app(app)
         db.create_all()         
 
+    def setUp2(self):
+        app = ComentariosTest.create_app(self)
+        SQLAlchemy(app)
+        app_context = app.app_context()
+        app_context.push()
+        db.init_app(app)
+        db.create_all()    
+
     def tearDown(self):
         db.session.remove()
         db.drop_all()
