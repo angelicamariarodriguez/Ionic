@@ -34,12 +34,6 @@ class Comentario(db.Model):
     cancion = db.Column(db.Integer, db.ForeignKey("cancion.id"))
 
 
-class Clase(db.Model):
-    identificador = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.String(255))
-    user = db.Column(db.Integer, db.ForeignKey("usuario.id"))
-    song = db.Column(db.Integer, db.ForeignKey("cancion.id"))
-
 class Medio(enum.Enum):
     DISCO = 1
     CASETE = 2
@@ -75,6 +69,12 @@ class Notificacion(db.Model):
     usuario = db.Column(db.Integer, db.ForeignKey("usuario.id"))
 
 class EnumADiccionario(fields.Field):
+    def _serialize(self, value, attr, obj, **kwargs):
+        if value is None:
+            return None
+        return {"llave": value.name, "valor": value.value}
+
+class EnumADiccionarioCopia(fields.Field):
     def _serialize(self, value, attr, obj, **kwargs):
         if value is None:
             return None
