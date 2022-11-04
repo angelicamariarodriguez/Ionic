@@ -34,6 +34,12 @@ class Comentario(db.Model):
     cancion = db.Column(db.Integer, db.ForeignKey("cancion.id"))
 
 
+class Clase(db.Model):
+    identificador = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    user = db.Column(db.Integer, db.ForeignKey("usuario.id"))
+    song = db.Column(db.Integer, db.ForeignKey("cancion.id"))
+
 class Medio(enum.Enum):
     DISCO = 1
     CASETE = 2
