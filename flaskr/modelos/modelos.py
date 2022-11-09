@@ -74,12 +74,6 @@ class EnumADiccionario(fields.Field):
             return None
         return {"llave": value.name, "valor": value.value}
 
-class EnumADiccionarioCopia(fields.Field):
-    def _serialize(self, value, attr, obj, **kwargs):
-        if value is None:
-            return None
-        return {"llave": value.name, "valor": value.value}
-
 
 class CancionSchema(SQLAlchemyAutoSchema):
     class Meta:
